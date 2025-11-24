@@ -5,7 +5,7 @@ class Pizza {
   final double price;
   final String imageUrl;
 
-  const Pizza({
+  Pizza({
     required this.id,
     required this.pizzaName,
     required this.description,
@@ -15,15 +15,18 @@ class Pizza {
 
   factory Pizza.fromJson(Map<String, dynamic> json) {
     return Pizza(
-      id: json['id'] ?? 0,
-      pizzaName: json['pizzaName'] ?? '',
-      description: json['description'] ?? '',
-      price: (json['price'] ?? 0).toDouble(),
-      imageUrl: json['imageUrl'] ?? '',
+      id: int.tryParse(json['id'].toString()) ?? 0,
+      pizzaName: json['pizzaName'] != null
+          ? json['pizzaName'].toString()
+          : 'No name',
+      description: json['description'] != null
+          ? json['description'].toString()
+          : '',
+      price: double.tryParse(json['price'].toString()) ?? 0.0,
+      imageUrl: json['imageUrl'] != null ? json['imageUrl'].toString() : '',
     );
   }
 
-  // --- INI BAGIAN YANG HILANG DAN MENYEBABKAN ERROR ---
   Map<String, dynamic> toJson() {
     return {
       'id': id,

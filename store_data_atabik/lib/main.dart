@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'AtabikM',
+      title: 'Atabik',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         appBarTheme: AppBarTheme(
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<List<Pizza>> readJsonFile() async {
     String myString = await DefaultAssetBundle.of(
       context,
-    ).loadString('assets/pizzalist.json');
+    ).loadString('assets/pizzalist_broken.json');
     List pizzaMapList = jsonDecode(myString);
 
     List<Pizza> myPizzas = [];
@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('AtabikM')),
+      appBar: AppBar(title: const Text('Atabik')),
       body: ListView.builder(
         itemCount: myPizzas.length,
         itemBuilder: (context, index) {
